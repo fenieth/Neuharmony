@@ -1,0 +1,460 @@
+/* Updated Color Scheme */
+:root {
+  --primary-teal: #008080;
+  --soft-sage: #8fbc8f;
+  --deep-forest: #2e4a2e;
+  --soft-mint: #d1e7dd;
+  --off-white: #f8f9fa;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', 'Roboto', 'Oxygen', sans-serif;
+  background-color: var(--soft-mint);
+  color: var(--deep-forest);
+  line-height: 1.6;
+}
+
+.app {
+  display: flex;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+.form-container {
+  max-width: 700px;
+  width: 100%;
+  background-color: var(--off-white);
+  padding: 40px 50px;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+  margin: 0 auto;
+}
+
+.form-title {
+  color: var(--deep-forest);
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 2.2rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.question-block {
+  margin-bottom: 35px;
+  padding-bottom: 25px;
+  border-bottom: 1px solid var(--soft-sage);
+}
+
+.question-text {
+  color: var(--primary-teal);
+  margin-bottom: 25px;
+  font-size: 1.3rem;
+  font-weight: 500;
+  padding-left: 15px; /* Indent question text */
+}
+
+.options-container {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding-left: 30px; /* Indent options */
+}
+
+.option-item {
+  display: flex;
+  justify-content: flex-start; /* Align options left but within indented container */
+}
+
+.radio-label, .checkbox-label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 10px 18px;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+  font-size: 1.1rem;
+}
+
+.radio-label:hover, .checkbox-label:hover {
+  background-color: var(--soft-mint);
+  transform: translateX(5px);
+}
+
+.radio-custom, .checkbox-custom {
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  margin-right: 12px;
+  border: 2px solid var(--soft-sage);
+  position: relative;
+  flex-shrink: 0;
+}
+
+/* Checked states */
+.radio-label input:checked + .radio-custom {
+  border-color: var(--primary-teal);
+}
+
+.radio-label input:checked + .radio-custom::after {
+  background: var(--primary-teal);
+}
+
+.checkbox-label input:checked + .checkbox-custom {
+  background-color: var(--primary-teal);
+  border-color: var(--primary-teal);
+}
+
+.warning-message {
+  background-color: #fff3cd;
+  color: #856404;
+  padding: 12px 20px;
+  border-radius: 8px;
+  margin: 15px 30px;
+  text-align: center;
+  font-size: 1rem;
+  border-left: 4px solid #ffc107;
+}
+
+.summary-section {
+  margin-top: 50px;
+  padding: 25px;
+  background-color: var(--soft-mint);
+  border-radius: 10px;
+  border: 1px solid var(--soft-sage);
+}
+
+.summary-section h2 {
+  color: var(--deep-forest);
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .form-container {
+    padding: 30px;
+    margin-left: 15px;
+  }
+  
+  .question-text {
+    font-size: 1.2rem;
+  }
+  
+  .options-container {
+    padding-left: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .form-container {
+    padding: 20px 15px;
+    margin-left: 10px;
+  }
+  
+  .form-title {
+    font-size: 1.8rem;
+  }
+  
+  .question-text {
+    font-size: 1.1rem;
+    padding-left: 10px;
+  }
+}
+
+.radio-label input[type="radio"],
+.checkbox-label input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  height: 0;
+  width: 0;
+}
+
+.radio-custom {
+  position: relative;
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  margin-right: 12px;
+  border: 2px solid var(--soft-sage);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.radio-label input:checked + .radio-custom {
+  border-color: var(--primary-teal);
+  background-color: var(--primary-teal);
+}
+
+.radio-label input:checked + .radio-custom::after {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: white;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.checkbox-custom {
+  position: relative;
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  margin-right: 12px;
+  border: 2px solid var(--soft-sage);
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.checkbox-label input:checked + .checkbox-custom {
+  background-color: var(--primary-teal);
+  border-color: var(--primary-teal);
+}
+
+.checkbox-label input:checked + .checkbox-custom::after {
+  content: '✓';
+  position: absolute;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.radio-label input:focus + .radio-custom,
+.checkbox-label input:focus + .checkbox-custom {
+  box-shadow: 0 0 0 3px rgba(0, 128, 128, 0.2);
+}
+
+.form-page {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+
+.navigation-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+
+.nav-button, .submit-button {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 30px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.prev-button {
+  background-color: var(--soft-sage);
+  color: var(--deep-forest);
+}
+
+.next-button, .submit-button {
+  background-color: var(--primary-teal);
+  color: white;
+}
+
+.nav-button:hover, .submit-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-container {
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+/* Plan Page */
+.plan-page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 30px;
+}
+
+.back-button {
+  background: none;
+  border: none;
+  color: var(--primary-teal);
+  font-size: 1rem;
+  cursor: pointer;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.back-button:hover {
+  text-decoration: underline;
+}
+
+.plan-content {
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+.plan-content pre {
+  white-space: pre-wrap;
+  font-family: inherit;
+  line-height: 1.6;
+}
+
+.print-button, .save-button {
+  padding: 10px 20px;
+  margin-top: 20px;
+  margin-right: 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.print-button {
+  background-color: var(--soft-sage);
+  color: var(--deep-forest);
+}
+
+.save-button {
+  background-color: var(--primary-teal);
+  color: white;
+}
+
+.loading-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  font-size: 1.5rem;
+  color: #004d40;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 6px solid #b2dfdb;
+  border-top: 6px solid #004d40;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 20px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Add these styles to your CSS file */
+.chat-container {
+  margin-top: 2rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1rem;
+  background-color: #f9f9f9;
+}
+
+.chat-container h3 {
+  margin-top: 0;
+  color: #333;
+}
+
+.chat-messages {
+  height: 200px;
+  overflow-y: auto;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  background-color: white;
+  border-radius: 4px;
+  border: 1px solid #eee;
+}
+
+.message {
+  margin-bottom: 0.8rem;
+}
+
+.message-content {
+  padding: 0.5rem 0.8rem;
+  border-radius: 4px;
+  display: inline-block;
+  max-width: 80%;
+}
+
+.message.user {
+  text-align: right;
+}
+
+.message.user .message-content {
+  background-color: #e3f2fd;
+}
+
+.message.bot .message-content {
+  background-color: #f1f1f1;
+}
+
+.typing-indicator {
+  display: inline-flex;
+}
+
+.typing-indicator span {
+  width: 8px;
+  height: 8px;
+  background-color: #666;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 0 2px;
+  animation: bounce 1.4s infinite ease-in-out both;
+}
+
+.typing-indicator span:nth-child(1) {
+  animation-delay: -0.32s;
+}
+
+.typing-indicator span:nth-child(2) {
+  animation-delay: -0.16s;
+}
+
+@keyframes bounce {
+  0%, 80%, 100% { transform: scale(0); }
+  40% { transform: scale(1); }
+}
+
+.chat-input {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.chat-input textarea {
+  flex: 1;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+.chat-input button {
+  padding: 0.5rem 1rem;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.chat-input button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
