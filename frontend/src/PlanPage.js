@@ -44,7 +44,6 @@ const PlanPage = ({ plan, onBack, loading }) => {
       setQuestion('');
     }
   };
-  
 
   return (
     <div className="plan-page">
@@ -62,6 +61,19 @@ const PlanPage = ({ plan, onBack, loading }) => {
       ) : (
         <div className="plan-content">
           <pre>{plan}</pre>
+
+          {/* Hyperlink added here */}
+          <div className="material-link">
+            <a href="https://drive.google.com/drive/folders/1gC0l3il0mfkWF4NB1L-io9iFP-dFcKvD?usp=sharing" target="_blank" rel="noopener noreferrer">
+              Ссылка на материалы для обучения
+            </a>
+          </div>
+
+          <div className="material-link">
+            <a href="https://toytheater.com/piano-c-major/" target="_blank" rel="noopener noreferrer">
+              Ссылка на онлайн пианино
+            </a>
+          </div>
           
           <div className="chat-container">
             <h3>Задайте вопрос нашему ИИ специалисту</h3>

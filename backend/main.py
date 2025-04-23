@@ -19,7 +19,7 @@ app.add_middleware(
 )
 
 client = OpenAI(
-    base_url="https://api.openai.com/v1",  # Ensure you're using the OpenAI API base URL
+    base_url="https://api.openai.com/v1",
     api_key=AI_TOKEN,
 )
 
@@ -27,32 +27,6 @@ YOUTUBE_LINKS = {
     "sensory_regulation": [
         {"description": "Бинауральная музыка для детей – глубокое расслабление", "link": "https://youtu.be/Fps2bqFV5nM"},
         {"description": "Музыка для сенсорной регуляции", "link": "https://youtu.be/F5Tt3LoygCQ"},
-        {"description": "Музыка для сенсорной регуляции", "link": "https://youtu.be/vLEek3I3wac"},
-        {"description": "Музыка для сенсорной регуляции", "link": "https://youtu.be/sBOLxexuUSI"},
-        {"description": "Музыка для сенсорной регуляции", "link": "https://www.youtube.com/live/jDoblNn1qvs"},
-        {"description": "Лёгкий дождь и пение птиц – звуки природы", "link": "https://www.youtube.com/watch?v=OdIJ2x3nxzQ"},
-        {"description": "Музыка для сенсорной регуляции", "link": "https://youtu.be/515an742WVg"},
-        {"description": "Музыка для сенсорной регуляции", "link": "https://youtu.be/eNUpTV9BGac"},
-        {"description": "Музыка для сенсорной регуляции", "link": "https://youtu.be/ipf7ifVSeDU"},
-        {"description": "Музыка для сенсорной регуляции", "link": "https://youtu.be/UyZfCrrdbm8"},
-        {"description": "Ритмическая игра с хлопками и песенкой", "link": "https://youtu.be/WivrnJFPb-Q"},
-        {"description": "Музыка для сенсорной регуляции", "link": "https://www.youtube.com/watch?v=Cm926T-GwsU"},
-        {"description": "Музыка для сенсорной регуляции", "link": "https://youtu.be/jAd4pYDM1T8"},
-        {"description": "Музыка для сенсорной регуляции", "link": "https://www.youtube.com/watch?v=zDuxn61UeGk"},
-        {"description": "Музыка для сенсорной регуляции", "link": "https://www.youtube.com/watch?v=HXpZhiPPTls"},
-        {"description": "Музыка для сенсорной регуляции", "link": "https://youtu.be/vjm8iGIm-0Q"},
-        {"description": "Энергичная музыка для вовлечения в движения", "link": "https://youtu.be/2pmkBsknKLw"},
-        {"description": "Билатеральная координация через музыкальные указания", "link": "https://youtu.be/j24_xH5uvdA"},
-        {"description": "Музыка для сенсорной регуляции", "link": "https://www.youtube.com/watch?v=nJq3LynIo6U"},
-        {"description": "Музыка для сенсорной регуляции", "link": "https://www.youtube.com/watch?v=VMaJHzZ_CjU"},
-        {"description": "Музыка для сенсорной регуляции", "link": "https://www.youtube.com/watch?v=TR-ue9SSUmM"},
-        {"description": "Метроном 60 BPM", "link": "https://youtu.be/IvUU8joBb1Q"},
-        {"description": "Метроном 70 BPM", "link": "https://www.youtube.com/watch?v=wo-wr_tRkCw"},
-        {"description": "Метроном 80 BPM", "link": "https://www.youtube.com/watch?v=SdTP5qQG8IY"},
-        {"description": "Музыкальные игры 'Что изменилось?'", "link": "https://www.youtube.com/watch?v=IvUU8joBb1Q"},
-        {"description": "Бинауральные биты", "link": "https://youtu.be/lkkGlVWvkLk"},
-        {"description": "Музыка для сенсорной регуляции", "link": "https://youtu.be/1ZYbU82GVz4"},
-        {"description": "Музыка для сенсорной регуляции", "link": "https://youtu.be/ewgvSvm_EwQ"}
     ],
     "focus": [
         {"description": "Музыка для концентрации", "link": "https://youtu.be/3SMhJep65TI"},
@@ -61,17 +35,8 @@ YOUTUBE_LINKS = {
     "emotional_development": [
         {"description": "Музыка для эмоциональной регуляции", "link": "https://youtu.be/iCEDfZgDPS8"},
         {"description": "Музыка для эмоциональной регуляции", "link": "https://youtu.be/F5V1jg9Hstk"},
-        {"description": "Музыка для эмоциональной регуляции", "link": "https://youtu.be/WVYuKFGRFUY"},
-        {"description": "Музыка для эмоциональной регуляции", "link": "https://youtu.be/l2bfx2vpWMo"},
-        {"description": "Музыка для эмоциональной регуляции", "link": "https://www.youtube.com/watch?v=ZtIW2r1EalM"},
-        {"description": "Музыка для эмоциональной регуляции", "link": "https://www.youtube.com/watch?v=c7O91GDWGPU"},
-        {"description": "Музыка для эмоциональной регуляции", "link": "https://youtu.be/0WYUx79E9MQ"},
-        {"description": "Музыка для эмоциональной регуляции", "link": "https://youtu.be/a8rNv7O3zOU"},
-        {"description": "Музыка для эмоциональной регуляции", "link": "https://youtu.be/V2sWl5ow3rM"},
-        {"description": "Музыка для эмоциональной регуляции", "link": "https://youtu.be/V7-2V0YnUZw"}
     ]
 }
-
 
 class UserData(BaseModel):
     age: str
@@ -97,14 +62,15 @@ def get_random_youtube_links(category: str, count: int = 2) -> List[dict]:
     links = YOUTUBE_LINKS[category]
     return random.sample(links, min(count, len(links)))
 
-
 @app.get("/")
 async def root():
     return {"message": "Neuharmony API is running!"}
 
 async def generate_therapy_response(user_data):
     try:
-        age = user_data.get('age', '')
+        age_raw = user_data.get('age', '')
+        match = re.search(r'\d+', age_raw)
+        age = int(match.group()) if match else 0
         diagnosis = user_data.get('diagnosis', '')
         features = user_data.get('features', [])
         difficulties = user_data.get('difficulties', [])
@@ -131,6 +97,22 @@ async def generate_therapy_response(user_data):
                 [f"- {link['description']}: {link['link']}" for link in links]
             )
 
+        motor_skills_section = ""
+        if age and int(age) >= 8 and "Развитие моторики" in goals:
+            motor_skills_section = (
+                "\n\nАвтоматические команды по моторике:\n"
+                "- Арифметические карточки с цветными нотами (тренировка моторной памяти и счёта)\n"
+                "- Цветные песни для чтения и игры (отработка моторики через зрительно-аудиальное восприятие)\n\n"
+                "Обязательные ссылки:\n"
+                "- Онлайн-пианино: https://toytheater.com/piano-c-major/\n"
+                "- Документы и карточки: https://drive.google.com/drive/folders/1gC0l3il0mfkWF4NB1L-io9iFP-dFcKvD?usp=sharing\n\n"
+                "Уточнение по инструменту: Если у родителя нет пианино, предложи использовать онлайн-пианино по ссылке выше. Объясни, что даже базовые упражнения возможны без физического инструмента.\n\n"
+                "Инструкции:\n"
+                "- Арифметические карточки: соединяйте 3–4 цветные ноты в простые комбинации. Повторяйте, пока движения не станут автоматическими.\n"
+                "- Цветные песни: выбирайте по одной песне в неделю, играйте с родительской помощью, опираясь на цветовую схему.\n\n"
+                "Встраивание в план: Добавляйте эти задания во 2–4 недели плана, в зависимости от частоты занятий и готовности ребёнка."
+            )
+
         prompt = (
             "Ты эксперт по музыкальной терапии для детей с РАС. Создай индивидуальный план:\n\n"
             f"1. Возраст: Адаптируй план под ребёнка {age} лет с учётом речевых, моторных и поведенческих особенностей возраста.\n"
@@ -153,11 +135,12 @@ async def generate_therapy_response(user_data):
             "4. Ссылки на музыкальные материалы (используй только те, что предоставлены ниже)\n\n"
             "Предоставленные YouTube ссылки:\n"
             f"{youtube_links_section}\n\n"
+            f"{motor_skills_section}\n\n"
             "(Не используй markdown или специальное форматирование)"
         )
 
         completion = client.chat.completions.create(
-            model="gpt-4",  # Updated model to GPT-4
+            model="gpt-4",  
             messages=[{"role": "system", "content": "Ты эксперт по музыкальной терапии для детей с РАС."},
                       {"role": "user", "content": prompt}],
             temperature=0.7,
@@ -183,7 +166,7 @@ async def generate_chat_response(question: str, context: str = None):
         )
 
         completion = client.chat.completions.create(
-            model="gpt-4",  # Updated model to GPT-4
+            model="gpt-4",  
             messages=[{"role": "system", "content": "Ты эксперт по музыкальной терапии для детей с РАС."},
                       {"role": "user", "content": prompt}],
             temperature=0.7,
