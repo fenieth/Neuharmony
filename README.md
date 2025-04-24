@@ -1,4 +1,4 @@
-For front end: cd frontend
+For frontend: cd frontend
 npm start
 
 For backend: cd backend
